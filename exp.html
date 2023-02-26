@@ -1,0 +1,252 @@
+<!doctype html>
+<!-- Abstrait / Concret word rating --
+
+**/
+--> 
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>? Métaphore</title>
+
+		<link rel="shortcut icon" href="img/layout/favicon.ico">
+		<!-- polyfill hold javascript functions that could be missing to older browsers -->
+		<script crossorigin="anonymous"  src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CArray.prototype.reduce%2CArray.isArray%2CArray.prototype.indexOf%2CObject.keys%2CArray.prototype.find"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+		<!-- jsPsych core & plugings + CSS -->		
+		<script src="js/jspsych_full.js"></script>	
+		<link href="css/jspsych.css" rel="stylesheet" type="text/css" />
+
+	</head>
+	
+	<body>
+	<p>Merci de votre intérêt pour cette expérience.</p>
+	<p>Le nombre maximal de participations a été atteint !</p>
+	
+	</body>
+
+	<script>
+		/** -----------
+		* Very Important Parameters */
+		
+		var isdemo =  false;
+		// In demo mode (isdemo = true), data are not saved in mySQL database but are shown as
+		// json jspsych data at the end of the experiment
+
+		/** -----------*/
+		/** DEFINITION OF STIMULI */
+
+		var rating_block = define_rating_block();
+		
+		// {word: word_random, check_point: check_stim};
+		// Crop the stim if demo mode - keep only 2 stim per block
+		if (isdemo){
+			rating_block.full.stim = rating_block.full.stim.slice(0, 2);
+		}
+		
+		/** Define ALL BLOCKS *
+		**********************/
+		
+		var welcome = {type: 'text',
+					text: "<p class='large'>Bienvenue dans cette expérience de Psychologie cognitive !</p>" +
+						"<p>Cliquez n'importe où pour commencer...</p>",
+					end_type: 'mouse'};	
+
+		var intro_rating = {
+			type: 'text',
+			title: 'Consignes',
+			
+			text: "<div class='instr'><p>Dans cette expérience, il vous est demandé d'évaluer des extraits de poèmes qui contiendront une partie en gras comme par exemple:</><i>\"l'océan de tes cheveux\"</i> ou <i>\"la feuille de calepin\"</i></p>"+
+			"<p>Chaque extrait de poème apparaîtra à l'écran, seul. Vous devez cliquer sur la page une fois que vous l'avez bien lu pour répondre à des questions.<p><b>Attention</b>, vous ne pourrez pas revenir en arrière.</p><p>Cette expérience a pour but d'évaluer votre ressenti face aux parties qui seront en gras et présenteront des contenus plus ou moins métaphoriques. Vous devrez évaluer la partie en gras prise dans son contexte original, c'est-à-dire dans l'extrait présenté. Pour rappel, voici la définition d'une métaphore selon <cite>Larousse</cite> : <br/><div id='quote'><q> Emploi d'un terme concret pour exprimer une notion abstraite par substitution analogique, sans qu'il y ait d'élément introduisant formellement une comparaison. </q></div></p><p>Ainsi, <i>\"l'océan de tes cheveux\"</i> serait plutôt métaphorique tandis que <i>\"la feuille de calepin\"</i> pas.</p></div>",
+			end_type: 'button',
+			button_string: 'Appuyer ici pour avoir un exemple !'
+		};	
+
+		var intro_art = {
+			type: 'text',
+			title: 'Consignes',
+			text: "<p>Vous trouverez en page suivante une liste de noms. Certains de ces noms sont des auteurs de romans ou de poésies, et d’autres ne le sont pas. </p>" 
+			+ "<p>Il vous est demandé de cocher les noms pour lesquels vous êtes <b>certain.e.s<b> que ce sont des auteurs.</p>"
+			+ "<p>Il y a une pénalité pour les noms cochés qui ne sont pas des auteurs, donc vous ne devez cocher que les noms pour lesquels vous êtes absolument sûr.e.s.</p>",
+			end_type: 'button',
+			button_string: 'Appuyer ici pour commencer'
+		};	
+		var fb_art = {
+			type: 'text',
+			title: 'Voici vos résultats :',
+			text: function(){
+				var score = jsPsych.getArtScore();
+				return "<p>Votre score total (-1 par réponses incorrecte) : </p><p class='score'> " + score.total + "</p>" +
+				"<p>Nombre de réponses correctes : </p><p class='score'>" + score.author + " sur 33 auteurs</p>" +
+				"<p>Nombre de réponses incorrectes :</p><p class='score' style='margin-bottom:2em;'>" + score.error + " sur 24 non-auteurs</p>";
+			},
+			end_type: 'button',
+			button_string: 'Appuyer ici pour continuer'
+		};			
+		// Instructions for sentence typing
+		var end_ex = {
+			type: 'text',
+			title:  "<p style='margin-top:15%;'>Fin de l'exemple</p>", 
+			text: "<p style='margin-bottom:1.8em;'>Cliquez sur le bouton quand vous êtes prêt pour voir les 24 autres phrases !</p>",
+			end_type: 'button',
+			button_string: "Continuer"
+		};	
+		
+		// Instructions for sentence typing
+		var end_task = {
+			type: 'text',
+			title:  "<p style='margin-top:20%;'>Merci ! C'est presque fini !</p>", 
+			text: "",
+			end_type: 'button',
+			button_string: "Continuer"
+		};			
+		
+		/*ART form */
+		var art_blocks = define_art_block();
+		/**  Survey blocks */
+		/* Define in a separate function to gain in readability */
+		var form_blocks = define_form_blocks(); 
+		
+		/** Merci */
+		var merci = "<p class='large'> Merci beaucoup d'avoir pris le temps de participer ! Vous pouvez fermer cette fenêtre.</p>";
+		
+		/**----------   WHOLE EXPERIMENT STRUCTURE **/
+		
+		var all_blocks = [intro_rating, rating_block.example, end_ex, rating_block.full, end_task, intro_art]; 
+		
+		var experiment = [];
+		
+		experiment.push(welcome);	
+		experiment = experiment.concat(all_blocks);	
+		experiment = experiment.concat(art_blocks, fb_art);
+		experiment = experiment.concat(form_blocks);
+	
+		// Put progress bar string in blocks parameters 
+		// (depending of total number of blocks involving progbar display ({progbar: true})
+		// jsPsych.prepareProgressBar(experiment);
+		
+		// subjID will be add in the database - based on the exact date when user was starting the experiment
+		var subjID = jsPsych.getSubjectID();
+		
+		/**------- STORE DATA TO MSQL DATABASE function */
+		// Function for writing the data in mysql database
+		// The database HAVE TO BE CONFIGURED
+		// ACCESS TO DATABASE IS DEFINED IN db / db_save.php 
+		function save_data(data){
+			return { 
+				type:'post',
+				cache: false,
+				url: 'db/db_save.php', 
+				data: {
+					json: data
+				}
+			}
+		}
+		
+		/**-------- Function for the LUCKY DRAW */
+		// each Ngap participants, a subject is defined as a winner (Ngap, Ngap*2, Ngap*3...)		
+		function lucky_draw(){
+			var luck_no = function(mail) {
+			
+				return "<p class='large'>Merci beaucoup d’avoir participé à cette expérience."+
+							"<p class='large'>Résultat du tirage : Vous n'avez pas gagné, dommage !</p>" +
+							"<p>Vous pouvez demander votre certificat de passation d'expérience en écrivant à Christelle Zielinski à l'adresse :</p>"+
+							"<p class='large red'>"+mail+"</p>"+
+							"<p>en précisant votre nom et numéro étudiant</p>" +
+							"<p>Vous pouvez fermer cette fenêtre quand vous le souhaitez...</p>"
+			};
+			
+			return {   
+				type: 'get',
+				url: 'db/db_luckydraw.php', 
+				dataType: 'json',
+				success: function(data) { 
+					if (data.winflag == 1){
+						var luckres = "<p class='lucky'>Merci beaucoup d’avoir participé à cette expérience."+
+							"<p class='lucky'><b>Résultat du tirage au sort : vous avez gagné la somme de 40€ !</b></p>" +
+							"<p class='lucky'>Pour la récupérer, merci d'envoyer un mail à Christelle Zielinski, à l'adresse :</p>" +
+							"<p class='large red'>"+data.mail+"</p><p>et en précisant le code : </p>" +
+							"<p class='large center-content red'><br>" + data.alphacode + "</br></p>" +
+							"<div class='fb_info'><p>Ce code est unique par gagnant. Il est tiré au sort parmi une liste "+
+							" prédéfinie.</p><p>La procédure utilisée garantit l'anonymat des données (aucun lien"+
+							" ne peut être établi entre les données de l'expérience et l'identité du gagnant).</p></div>"+
+							"<p>Vous pouvez fermer cette fenêtre quand vous le souhaitez.</p>";
+							$("body").html(luckres);
+					} else {
+						$("body").html(luck_no(data.mail));			
+					}
+				},
+				error : function(resultat, statut, erreur){
+				// should no append!
+					$("body").html(luck_no(""));	
+				}
+			}
+		}
+		function lucky_draw_demo(){
+			var luckres = "<p class='lucky'>(DEMO) Merci beaucoup d’avoir participé à cette expérience."+
+				"<p class='lucky'><b>Résultat du tirage au sort : vous avez gagné la somme de 40€ !</b></p>" +
+				"<p class='lucky'>Pour le récupérer, merci d'envoyer un mail à Marion Fechino, responsable "+
+				"de cette étude, à l'adresse : xxx.xxx@univ-amu.fr, en précisant le code : </p>" +
+				"<p class='large center-content'><br>XXX-XXX</br></p>" +
+				"<div class='fb_info'>Ce code est unique par gagnant. Il est tiré au sort parmi une liste "+
+				" prédéfinie. La procédure utilisée garantit l'anonymat des données (aucun lien"+
+				" ne peut être établi entre les données de l'expérience et l'identité du gagnant).</div>"+
+				"<p>Vous pouvez fermer cette fenêtre quand vous le souhaitez...</p>" +
+				"<p>///////</p>" +
+				"<p class='large'>Merci beaucoup d’avoir participé à cette expérience."+
+							"<p class='large'>Résultat du tirage : Vous n'avez pas gagné, dommage !</p>" +
+							"<p>Vous pouvez fermer cette fenêtre quand vous le souhaitez...</p>"
+				;
+			$("body").html(luckres);
+		}	
+		/** GO ! Start the experiment */
+		// removing the db_check_win process here for the github version
+		// by commenting it
+		/*$.ajax({
+			// check the number of winner
+			type: 'get',
+			url: 'db/db_check_win.php', 
+			dataType: 'json',
+			success: function(is_ok) { 
+
+				if (!is_ok){
+					$('body').html("<p>Merci de votre intérêt pour cette expérience.</p><p>Le nombre maximal de participations a été atteint !</p>");				
+				}else{*/
+					jsPsych.init({
+						experiment_structure: experiment,
+						on_finish: function(){ 	
+							// Save all the data in the database
+							if (!isdemo){					
+								// get all jsPsych data
+								var alldata = jsPsych.prepare_data();
+								alldata['info'] = {id: subjID};
+								alldata = JSON.stringify(alldata);
+								// Save 
+								// (not for the github version)		
+								//$.ajaxQueue(save_data(alldata));
+					
+								// Check if subject is the winner of the day !!!
+								$.ajaxQueue(lucky_draw_demo());
+								// Add merci
+								//$("body").html(merci);
+							}
+						
+							// Display all data on the page (debug mode)
+							if (isdemo){ 
+								//lucky_draw_demo();
+								//$("body").html(merci);
+								$("body").append("jspsych data :");
+								var data = jsPsych.data.getData();
+								jsPsych.data.displayData(JSON.stringify(data));
+							}
+						}									
+					}); 
+				/*}
+			}
+		});*/
+
+	</script> 
+
+</html>

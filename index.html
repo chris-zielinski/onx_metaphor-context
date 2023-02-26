@@ -1,0 +1,176 @@
+<!DOCTYPE html>   
+<!--
+**/-->
+<html>   
+	<head>  
+		<meta charset="utf-8" />
+		<title>Métaphore ?</title>
+		<link rel="shortcut icon" href="img/layout/favicon.ico">	
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+		<!-- Add informations on bottom section - infotxt is return -->
+		<script src="js/infos.js"></script>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	
+	<body>
+
+		<header>
+			<img class="hlogo" src="img/layout/logo_exp.png"/>
+			<div id="catch">
+				<p>Participez à notre expérience en ligne</p>
+			</div>
+		</header>			
+			
+		<section class="mcol-section">
+			<div class="row">
+				<div class="col"> 
+					<p class="info-title shabox">Pourquoi ?</p> 
+					<p>Ce questionnaire est destiné à évaluer votre appréciation d’extraits de poèmes pouvant être des métaphores ou pas et présentées dans leur oeuvre d’origine (c’est-à-dire l’extrait d’un poème). Cette étude se place dans le cadre de mon projet de thèse qui porte sur l’étude de la lecture de poésie et des facteurs qui peuvent influencer votre ressenti lors de votre lecture. Ce questionnaire fait suite à un premier questionnaire qui a été fait il a quelques mois.
+					</p> 
+				</div>
+			
+				<div class="col"> 
+					<p class="info-title shabox">Comment ?</p>
+					<p>Cette expérience vous prendra entre 20 à 30 minutes. Vous allez voir 24 extraits de poèmes que vous allez devoir évaluer sur différents critères. Dans un second temps, un questionnaire de reconnaissance d’auteurs vous sera présenté. Les consignes plus détaillées seront données dans l’expérience. <b>Merci de participer seulement si votre langue maternelle est le français.</b>
+					</p>				
+				</div>
+				
+				<div class="col">
+					<p class="info-title shabox">Qui sommes-nous ?</p> 
+					<p>Cette étude est réalisée sous l'initiative de chercheurs d'<a target="_blank" href="https://www.univ-amu.fr/">Aix-Marseille Université</a> du <a target="_blank" href="https://lpc.univ-amu.fr/">Laboratoire de Psychologie Cognitive</a> et du <a target="_blank" href="https://www.lis-lab.fr/">Laboratoire Informatique & Systèmes</a>, ainsi que de la <a target="_blank" href="https://www.fu-berlin.de/">Freie Universität Berlin</a>. Elle bénéficie du soutien du <a target="_blank" href="http://blricrex.hypotheses.org/">Centre de Ressources pour l'Expérimentation</a> de l'<a target="_blank" href="https://www.ilcb.fr/">Institute of Language, Communication and the Brain</a>. 
+					</p>
+				</div>
+			</div>
+		</section>
+		
+		<section id="appat">
+			A la fin de cette expérience, vous gagnerez peut-être la somme de 40€ (un gagnant tous les 40 participants) !
+			<!-- Merci de votre intérêt ! En raison d'un grand nombre de participations, cette expérience est close. En espérant vous revoir pour de futures études ! -->
+		</section> 
+		
+		<section class="mcol-section">
+			<div class="row">	
+				<div class="col"> 
+					<div id="contact">
+						<p>Des questions ?<br>Suivre l'avancée de l'étude ?<br>Contactez nous !<br> marion.fechino (at) univ-amu.fr</p>
+					</div> 
+					<div id="more_info" class="more_info_disp">
+						<a id = "more_info_key" href="#" title="Mentions légales, anonymat...">
+							<p class="important dotted">Informations supplémentaires</p>
+						</a> 
+					</div>
+				</div>
+
+				<div class="col col-start"> 	
+					<div id="start"> 
+						<div id="no-start"></div>
+						<div class="start-ok">
+							<div id="subbut" class="form_subbutton">
+								<div id="startkey" class="button">
+									<span>Participer</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+
+				<div class="col">
+					<div id="banlogo">
+						<a target="_blank" href="https://www.univ-amu.fr/">
+							<img class="logo" src="img/layout/logo_amu.png" alt="Logo AMU" title="Vers le site d'Aix-Marseille Université" /></a>
+						<a target="_blank" href="https://lpc.univ-amu.fr/">
+							<img class="logo" src="img/layout/logo_lpc.png" alt="Logo LPC" title="Vers le site du Laboratoire de Psychologie Cognitive" /></a>
+						<a target="_blank" href="https://www.lis-lab.fr/">
+							<img class="logo" src="img/layout/logo_lis.png" alt="Logo LIS" title="Vers le site du Laboratoire Informatique & Systèmes" /></a>
+						<a target="_blank" href="https://www.fu-berlin.de/">
+							<img class="logo" src="img/layout/logo_fub.png" alt="Logo FUB" title="Vers le site de Freie Universität Berlin" /></a>							
+						<a target="_blank" href="https://www.ilcb.fr/">
+							<img class="logo" src="img/layout/logo_ilcb.png" alt="Logo BLRI" title="Vers le site de l'ILCB" /></a>
+					</div>
+				</div>	
+			</div>
+		</section>
+		
+		<section id="info_legal">
+			<div id="info_container" style="display: none;">
+				<div id="info_div">
+				</div>
+			</div>
+		</section>
+		
+		<section id="consent">			
+			<div id="consent_container" style="display: none;">
+				<div id="consent_div">
+					<div id="consent_text">
+					<h1><span id="title_consent">Consentement de participation</span><img src="img/layout/close_cross.png" id="consentClose"/></h1>
+					<p></p>
+					<p>Les données sont anonymes et vous pouvez à tout moment quitter l'expérience.</p>
+					<p><b>Attention</b>: Cette expérience dure entre 20 et 30 minutes : veuillez prévoir suffisament de temps pour ne pas être dérangé(e) pendant la durée de ce test !</p>
+					<p>Pour les gagnants, en ces temps de coronavirus, la procédure pour retirer votre prix sera la suivante. 
+					A la fin de l’expérience, vous recevrez un mail d’information pour venir récupérer l’argent gagné. 
+					Nous aurons besoin de votre signature et de votre numéro de carte vitale (procédure obligatoire habituelle pour les participants aux recherches) en échange des 40 euros. 
+					Nous vous donnerons les informations sur les créneaux horaires disponibles pour venir retirer l’argent au LPC (Laboratoire de Psychologie Cognitive) à Marseille - campus Saint Charles.
+					</p>
+					<p class="important">Pour commencer cette étude, vous devez cocher cette case <label for="consent-check"><input type="checkbox" id="consent-check" required> qui indique que vous consentez à participer.</p>
+					</div>
+					<div class="more_info_disp">Pour plus d'informations (anonymat, mentions légales...), cliquez <span class="important">ici</span>.</div>
+					 <div id="consent_button" style="visibility: hidden;"> 
+						<div id="subbut" class="form_subbutton">
+							<a id = "okstartlink" href="#" onclick="window.open('exp.html', '_self'); return false;">
+								<div id="submit" class="button">
+									<span>Commencer l'expérience</span>
+								</div>
+							</a> 
+						</div>
+					</div>
+				</div>	
+
+			</div>
+			
+		</section>						
+	</body>
+	<script>
+		//<---- not for the github version
+		/*$.ajax({
+			// check the number of winner
+			type: 'get',
+			url: 'db/db_check_win.php', 
+			dataType: 'json',
+			success: function(is_ok) { 
+				//console.log(typeof is_ok);
+				if (!is_ok){
+				$('#start').css('display', 'none');
+				$('#appat').html("Merci de votre intérêt ! En raison d'un grand nombre de participations, cette expérience est close. En espérant vous revoir pour de futures études !");
+					
+				}
+			},
+			error : function(resultat, statut, erreur){
+				//$("body").html(luck_no);	
+			}
+		});*/
+		//------->
+		// Add More informations section
+		var infostr = "<h1><span id='title_info'>Informations</span><img src='img/layout/close_cross.png' id='crossClose'/></h1>";
+		infostr += "<div id='info_text'>" + info_txt + "</div>";
+		$('#info_div').html(infostr);
+		// Display the more_info div when click on it
+		$('.more_info_disp').click(function(){	
+			$("#info_container").fadeIn(500);
+			$("#crossClose").click(function(){$("#info_container").fadeOut(500)});				
+		});
+		$('#consent-check').click(function(){
+			if ($(this).is(':checked')){
+				$('#consent_button').css('visibility', 'visible');
+			}else{
+				$('#consent_button').css('visibility', 'hidden');
+			}
+		});
+		// Display the consent_div div when click on start key
+		$('#startkey').click(function(){	
+			$("#consent_container").fadeIn(500);
+			$("#consentClose").click(function(){$("#consent_container").fadeOut(500)});				
+		});		
+	</script>
+</html>

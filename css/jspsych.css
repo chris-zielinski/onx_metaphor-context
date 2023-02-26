@@ -1,0 +1,639 @@
+/* 
+ * CSS for jsPsych experiments
+ */
+
+/*
+ * Font  */
+ 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+
+html {
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 24px;
+	line-height: 1.3em;
+	background-image: url("../img/layout/paper.png");
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 95%;
+}
+
+p {
+    clear: both;
+}
+
+.title {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(80, 80, 90);
+	padding-bottom: 0.4em;
+	margin: 0em;
+}
+
+/*
+ * -- Font size
+ */
+.very-small {
+    font-size: 50%;
+}
+
+.small {
+    font-size: 85%;
+}
+
+.large {
+    font-size: 115%; 
+}
+
+.very-large {
+    font-size: 150%;
+}
+
+/*
+ * -- Layout
+ */
+.red{
+	color: rgb(204, 105, 79);
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
+/*
+ * -- Container holding jsPsych content
+ */
+
+.jspsych-display-element {
+    width: 80%;
+	margin: auto;
+    padding-top: 1.5em;
+	text-align: center;
+	color: rgb(0, 136, 155);
+}
+
+/************ GLOBAL CLASS */
+
+.blue{
+    color: rgb(0, 103, 168);
+}
+
+/* Hide cursor */
+.hidecursor {
+	cursor: none !important;
+}
+
+#jspsych-data-display{
+	font-size: 16px;
+}
+
+.instr{
+	font-size: 22px;
+	color: rgb(0, 136, 155); 
+}
+.instr p{
+	margin: 0.5em;
+	line-height: 1.2em;
+}
+#quote{
+	font-size: 0.9em;
+	color: rgb(130,10, 10);
+	line-height: 1.1em;
+	width: 80%;
+	margin: auto;
+}
+
+#instr-title{
+	font-size: 2em;
+	color: rgb(105, 105, 105);
+	font-weight: bold;
+}
+
+/*
+ ******* jsPsych PLUGINS *
+ */
+
+#validbutton {
+	display: inline-block;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+/* -- RATING TRIALS **/
+#stim{
+	font-size: 1em;
+	color: rgb(89, 89, 89);
+	width: max-content;
+	margin: 1.5em 0% 0em 25%;
+	text-align: left;
+}
+#recall{
+	position: absolute;
+	bottom: 1em;
+	right: 0.3em;
+	color: rgb(159, 159, 159);
+	font-style: italic;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+#rating-wrap{
+	max-width: 1000px;
+	min-width: 770px;
+	margin: auto;
+}
+.top-line{
+	border-top: 1.5px solid rgb(200, 200, 200);
+	padding-top: 0.8em;
+}
+.col-header{
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  text-align: center;
+  margin-bottom: 0.8em;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: rgb(89, 89, 89);
+}
+.ex_indic{
+	font-size: 0.8em;
+	font-weight: normal;
+}
+.col-left {
+  text-align: right;
+  margin-right: 0.4em;
+}
+.col-right {
+  text-align: left;
+  margin-left: 0.4em;
+}
+.col-range{
+	font-size: 0.8em;
+	word-break: break-word;
+	hyphens: auto;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.col-radio {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 0.6em;
+}
+
+/* center radio below label */
+
+.choice label{
+    display: inline-block;
+    text-align: center;
+    margin: 0em 0.3em;
+	cursor: pointer;
+}
+.choice label input[type="radio"] {
+    display: block;
+    margin: 0em auto 0.4em;
+}
+
+.radiv{
+  padding: 0;
+  width: 32px;
+  font-size: 18px;
+  line-height: 1em;
+}
+
+.radio
+{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+}
+.radio:checked::before
+{
+  position: absolute;
+  font: 13px/1 'Open Sans', sans-serif;
+  left: 7px;
+  top: 2px;
+  content: '\02143';
+  transform: rotate(40deg);
+}
+.radio:hover
+{
+  background-color: #f7f7f7;
+}
+.radio:checked
+{
+  background-color: rgb(36, 176, 163);
+  color: rgb(255, 255, 255);
+}
+.radiv:hover{
+  color: rgb(100, 180, 120);
+}
+.check-header{
+  text-align: center;
+  line-height: 1.4em;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: rgb(89, 89, 89);
+  width: 80%;
+  margin: auto;
+}
+#check-wrap{
+	width: max-content;
+	max-width: 100%;
+	margin: auto;
+	text-align: left;
+	padding-top: 1.5em;
+}
+#check-wrap label{
+	cursor: pointer;
+}
+.checkbox{
+	border-radius: 3px;
+	top: 10px;
+	margin-right: 1em;
+}
+#feedback{
+	font-size: 1.5em;
+	margin: 10%;
+	line-height: 1.4em;
+}
+#required{
+	margin-top: 1em;
+	text-align: center;
+	width: 100%;
+	color: rgb(106, 106, 106);
+}
+
+/* ART form**/
+#author-instr{
+	margin: 0;
+	padding-bottom: 1em;
+	font-style: italic;
+	color: rgb(100, 100, 100);
+	font-size: 0.8em;
+}
+#tab{
+	border-collapse: collapse;
+	margin: auto;
+}
+#tab th{
+	text-align: right;
+	font-size: 0.85em;
+	color: rgb(100, 100, 100);
+	border-right: 1px solid rgb(193, 210, 225);
+}
+
+#tab td{
+	white-space: nowrap;
+	border-right: 1px solid rgb(193, 210, 225);
+	font-size: 0.8em;
+}
+#tab label{
+	cursor: pointer;
+}
+#tab td, #tab th {
+	padding: 3px;
+}
+#tab tr{
+	border: 1px solid rgb(193, 210, 225);
+	background-color: rgba(250, 250, 250, 0.5);
+}
+#tab tr:nth-child(even){
+	background-color: rgba(253, 231, 208, 0.5);
+}
+
+#tab tr:hover {
+	/*background-color: rgba(255, 255, 255, 0.6);*/
+}
+.score{
+	font-size: 1.4em;
+	line-height: 0em;
+	font-weight: bold;
+}
+
+/*
+ * -- Form elements 
+*/
+
+/* Add bottom margin to the form preamble */
+.form_preamble {		
+	margin-bottom: 30px;
+	font-size: 24px; 
+	text-align: left;
+	line-height: 1.2em;
+}
+
+.form_div {
+	max-width: 750px;
+	font-size: 20px;
+	text-align: left;
+	line-height: 1.2em;
+	margin: auto;	
+}
+
+.form_row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	height: auto;
+	border: 1px dotted rgba(28,110,164,0.67);
+	margin-bottom: 0.5em;
+	padding: 0.5em 0.2em 0.5em 0.4em;
+	background-color: rgba(220, 230, 230, 0.5);
+	border-radius: 5px;
+}
+.form_quest{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1.5;
+  color: rgb(210, 86, 8);
+}
+.form_resp{
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	font-size: 18px;
+	/*white-space: nowrap;*/
+}
+@media screen and (max-width: 800px) {
+  .form_quest {
+    font-size: 16px;
+  }
+  .form_resp{
+	font-size: 16px;
+  }
+}
+
+.form_resp label:hover {
+	color: rgb(0, 200, 150);
+	background-color: rgb(240, 240, 240);
+}
+
+.form_resp label{
+	/*width: max-content;
+	margin-left: 0.5em;*/
+}
+.radio_div{
+	display: inline-block;
+	text-align: center;	
+}
+.radio_div label{
+	/*display: inline-block;*/
+	white-space: nowrap;
+}
+.text_lab {
+	margin: auto;
+}
+
+.form_resp select{
+	width: max-content;
+	margin-left: 0.5em;
+	width: 60%;
+	text-align: center;
+	margin: auto;
+	font-size: 16px;
+}
+
+.checkbox_lab {
+	margin-left: 0.5em;
+	/*margin-left: 4px;
+	margin-right: 10px;
+	text-align: left;*/
+}
+.checkbox_but{
+	margin-right: 0.8em;
+}
+.radio_lab {
+	margin-left: 0.5em;
+	/*margin-right: 10px;
+	text-align: left;*/
+	/*display: inline-block; *//*Avoid splitting between button and label*/
+}
+.radio_but {
+	margin-right: 0.8em;
+}
+.reqanswer {	
+	background-color: rgba(240, 86, 8, 0.05);	
+}
+
+.hiderow {
+	display: none;
+}
+
+.form_onchg > .form_quest {
+	color: rgb(0,156,140);
+}
+
+/* Validation button */
+
+
+.button {
+	display: block;
+	width: max-content;
+	max-width: 100%;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	border-radius: 8px;
+	background-color: rgb(218, 218, 218);
+	margin: 1em auto;
+}
+
+.button span {
+  display: inline-block;
+  padding: 10px 40px 10px 40px;
+  font-size: 24px;
+	font-weight: bold;
+	color: rgb(100, 100, 100);
+}
+
+.button span:hover {
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	background-color: rgb(0, 136, 155);
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;  	
+	-ms-border-radius:8px;  	
+	-o-border-radius: 8px;  
+}
+.button-rating span:hover{
+	background-color: rgb(200, 200, 200);
+}
+
+
+#luckyform {
+	margin-top: 2em;
+	text-align: center;
+	width: 100%;
+	font-size: 16px;
+	line-height: 1.2em;	
+}
+
+#luckyform input {
+	text-align: left;
+}
+
+#luckyform .form_col {
+	display: inline-block;
+	margin-right: 15px;
+	margin-bottom: 0.2em;
+	padding: 0.1em;
+	min-height: 0em;
+	text-align: right;
+	width: 30%;
+	border: 1px dotted rgba(28,110,164,0);
+}
+	
+#luckyform .form_resp {
+	padding: 0.3em;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	border-bottom: 1px solid rgba(28, 110, 164, 0.5);
+	background-color: rgba(255, 255, 255, 0);
+}
+#luckyform .reqanswer {
+	border: 2px dotted rgba(210, 86, 8, 0.67); 
+	color: rgb(240, 86, 8);		
+}
+.form_col p {
+	margin: 0em;
+	font-size: 0.7em;
+	color: rgb(110, 110, 110);
+	font-style: italic;
+	line-height: 0.5em;
+	padding-bottom: 0.2em;
+}
+
+.lucky {
+	margin: 0.6em;	
+	font-size: 0.9em;
+}
+
+.lucky_disp {
+	width: 80%;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 0.5em;
+	font-size: 0.8em;
+}
+.lucky_disp p{
+	margin: 0.6em;
+	line-height: 1.3em;
+	font-size: 0.8em;
+	text-align: left;
+	color: rgb(100, 100, 100);
+}
+
+.info{
+	font-size: 16px;
+	font-style: italic;
+	color: rgb(65, 65, 65);
+	line-height: 22px;
+	margin-top: 10px;
+}
+
+#mail {
+	text-align: left;
+	line-height: 1.5em;
+	background-color: rgba(255, 255, 255, 0.4);
+	padding: 0em 1em;
+	border: 1px dotted rgba(0, 103, 168, 0.7);
+	border-radius: 10px;
+	color: rgb(0, 0, 0);	
+}
+
+@media all and (max-width: 780px) {
+	body{
+		width: 90%;
+	}
+  .jspsych-display-element {
+    font-size: 0.9em;
+	width: 90%;
+  }
+  #rating-wrap{
+	font-size: 0.8em;
+	min-width: auto;
+  }
+
+  .col-header{
+	font-size: 1em;
+	line-height: 1.1em;
+	padding-bottom: 0.4em;
+	height: auto;
+  }
+  .column{
+	flex: unset;
+	flex-basis: 7em;
+  }
+  .col-range{
+	font-size: 0.8em;
+	background-color: rgba(223, 141, 54, 0.1);
+	margin-bottom: 0.4em;
+	line-height: 1em;
+  }
+  .col-left {
+    text-align: left;
+    border-left: 0.5em solid rgba(0, 200, 200, 0.5);
+    padding-left: 0.2em;
+	margin-right: auto;
+  }
+  .col-right{
+	text-align: right;
+	border-right: 0.5em solid rgba(0, 200, 200, 0.5);
+	margin-left: 4.4em;
+	padding-right: 0.2em;
+  }
+  .col-radio{
+	margin: auto;
+	order: 3;
+  }
+  .radio{
+	height: 18px;
+	width: 18px;
+  }
+  .radiv {
+	font-size: 16px;
+  }
+  .radio:checked::before{
+	left: 5px;
+	top: 1px;
+  }
+  .col-radio .choice label{
+	  margin: 0 0;
+  }
+  .button {
+	  margin: 0.5em auto;
+  }
+}
